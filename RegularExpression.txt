@@ -1,3 +1,11 @@
+/** TODO Regular Expression Special Characters */
+^$
+()[]{}
+?+*
+|
+.\
+
+
 // 定位符
 ^       // 匹配字符串开始位置
 $       // 匹配字符串结束位置

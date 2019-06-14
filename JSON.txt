@@ -1,0 +1,37 @@
+JSON(JavaScript Object Notation): JS 对象标记
+
+object：key 必须是 string 类型
+{
+    "key": value,
+    "key": value
+}
+
+array:
+[
+    value,
+    value
+]
+
+value 可能存在的值:
+    string 可能存在的值:
+        "任何 unicode 字符，除了 双引号(") 反斜杠(\) 和 控制字符"
+        "\""
+        "\\"
+        "\/"
+        "\b"
+        "\f"
+        "\n"
+        "\r"
+        "\t"
+        "\u0000"        # \u 后面跟 4 位 16 进制数，代表一个 unicode 字符，可以是控制字符，比如 \u0000 表示 NUL; \u0007 表示响铃; 
+        
+    number 可能存在的值：
+        -0.8765e+2      # -87.65
+        -0.8765e-2      # -0.008765
+        
+    true
+    false
+    null
+    object
+    array
+    

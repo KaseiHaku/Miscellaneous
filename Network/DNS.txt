@@ -1,0 +1,22 @@
+假如我申请的域名为 haku.kasei
+假设我的服务器 IPv4 = 1.2.3.4   IPv6 = 1234::1
+
+A 记录：把用户输入的域名解析到指定的 IPv4 上
+Example: A      haku.kasei      1.2.3.4
+
+AAAA 记录：把用户输入的域名解析到指定的 IPv6 上
+Example: AAAA      haku.kasei      1234::1
+
+CNAME 记录：给申请的域名起个别名，指定到指定的 A 记录上
+Example: CNAME      miku.kasei     haku.kasei
+Example: CNAME      luka.kasei     haku.kasei
+
+MX 记录：指定当前域名的邮件服务器 IP 地址
+Example: MX     @haku.kasei        4.5.6.7
+
+NS 记录：指定解析当前域名的域名服务器地址
+Example: NS     haku.kasei     8.8.8.8
+
+SOA 记录：当有多个 NS 记录时，用来指定主域名解析服务器
+Example: SOA    8.8.8.8
+

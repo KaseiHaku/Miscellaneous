@@ -33,7 +33,7 @@ TLS/HTTPS 加密原理：
         应答：Server - data -> 黑客 - data -> Client
     
     改进三：
-        使用公信机构，即 CA机构
+        使用公信机构，即 CA(Certification Authority)机构
         操作系统 或 浏览器 本身预装一些他们信任的 根证书，那么 Client（浏览器） 就知道 根证书中的公钥是绝对正确的，
         Server 使用 HTTPS 前，向 CA机构 提交数字证书的证书内容（该内容包含 持有者的公钥、域名 等信息）用于制作数字证书
         CA 机构使用 Hash 算法对证书内容（明文）进行计算，得到证书内容的 消息摘要A，

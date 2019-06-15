@@ -20,3 +20,5 @@ Example: NS     haku.kasei     8.8.8.8
 SOA 记录：当有多个 NS 记录时，用来指定主域名解析服务器
 Example: SOA    8.8.8.8
 
+PTR 记录：用于查询指定 IP 对应的域名
+Example: PTR    1.2.3.4       haku.kasei

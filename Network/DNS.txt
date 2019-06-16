@@ -1,3 +1,6 @@
+国外免费的域名申请网站：
+    https://www.freenom.com/zh/freeandpaiddomains.html
+
 假如我申请的域名为 haku.kasei
 假设我的服务器 IPv4 = 1.2.3.4   IPv6 = 1234::1
 

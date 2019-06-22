@@ -50,5 +50,14 @@ TLS/HTTPS 加密原理：
         
         
         数字证书 = 证书内容 + 内容的数字签名（被 CA机构使用私钥加密）
+        
+        
+ 
+TLS 应用：
+    1. CA (Certification Autority) & User Certification: 对互联网上传输的数据进行加密，防止数据泄露 和 中间人攻击
+    2. TSA (Timestamp Authority): 时间戳认证，用于对证书的产生时间进行认证，应用领域：金融交易
+    
+    
+    
     
   

@@ -1,0 +1,33 @@
+# 以下 请求头 和 响应头 按顺序配对
+
+Request Header:
+    # 指定 Client 当前发送内容的 MIME-Type 以及 Charset Boundary 等参数
+    Content-Type: text/html; charset=utf-8; boundary=----kaseihaku
+    
+    # 对应 Server Header Content-Type 中的 MIME-Type; 指定 Client 可以接收的 MIME 类型
+    Accept: text/html, application/json;q=1.0, application/xml;q=0.9, */*;q=0.8  # q=权重，不设置默认 1.0 比如 text/html
+    
+    # 对应 Server Header Content-Type 中的 charset; 指定 Client 可以接收的 字符集 类型
+    Accept-Charset: utf-8;q=1.0, iso-8859-1;q=0.5, *;q=0.1   
+    
+    # 对应 Server Header Content-Encoding; 指定 Client 可以接受 压缩算法 类型
+    Accept-Encoding: gzip;q=1.0, compress;q=0.9, deflate;q=0.5, br;q=0.3, identity;q=0.1, *;q=0.0
+    
+    # 对应 Server Header Content-Language;
+    Accept-Language: en-US;q=1.0, zh-CN;q=0.5, *;q=0.1
+    
+Response Header:
+    # 指定 Server 当前返回内容的 MIME-Type 以及 Charset Boundary 等参数
+    Content-Type: text/html; charset=utf-8; boundary=----kaseihaku
+    
+    # 
+    Content-Disposition: 
+    
+    # 指定 Server 可以接受的 Media-Type 类型
+    Accept-Patch: text/example;charset=utf-8
+    
+    # 指定 Server 是否可以接受 局部或者分段 请求
+    Accept-Ranges: bytes
+    
+    
+    

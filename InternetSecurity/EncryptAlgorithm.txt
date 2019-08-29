@@ -18,7 +18,7 @@
     RSA 证书可以用于 RSA 密钥交换（RSA 非对称加密）或 ECDHE 密钥交换（RSA 非对称签名）；而 ECC 证书只能用于 ECDHE 密钥交换（ECDSA 非对称签名）
 
 Glossary:
-    ECDHE:  密钥交换协议，全称：ECC Diffie-Hellman Exchange
+    ECDHE:  密钥交换协议，全称：Elliptic Curve Diffie-Hellman Exchange
     
 
 

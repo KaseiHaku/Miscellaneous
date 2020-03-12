@@ -1,0 +1,10 @@
+http://www.zvon.org/xxl/XPathTutorial/General/examples.html
+######## 标签选择
+//*                                         # // 表示忽略中间层级，可以是任意层
+/*/*/AAA                                    # /*/*/ 表示不忽略中间层级，有多个就是多少层
+
+
+######## 属性选择
+
+
+######## 标签选择

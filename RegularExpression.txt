@@ -3,7 +3,8 @@ POSIX (Portable Operating System Interface): 可移植操作系统接口标准
     BRE (Basic Regular Expressions):  grep 和 vim 中默认的正则表达式标准        
     ERE (Extended Regular Expressions): grep -E 使用的 RE 标准
 PCRE 标准
-    以下是 PCRE 标准
+    grep -P 使用的 RE 标准
+    以下是 PCRE 标准 
 
 /** TODO Regular Expression Special Characters */
 ^$

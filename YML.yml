@@ -1,0 +1,85 @@
+# spring 中所有配置文件，命令行参数等信息，都可以通过 Environment 类来获取，或者通过 @ConfigurationProperties 注解来获取
+# yml 不能使用 @PropertySource 引入属性，只能用 .properties 文件
+spring:
+  application:
+    name: SpringBoot
+    description: ${spring.application.name} is my spring boot study project
+  profiles:
+    active: home
+
+
+# Array List Set
+ymlary1: [1, 2, 3]
+ymlary2:
+    - 1
+    - 2
+    - 3
+
+# Null
+ymlnull: ~          # 相当于 json 中 {"ymlnull": null}
+
+# Date
+ymldate: 2019/01/01
+
+# Object Map
+ymlobj1:
+  key1: value1
+  key2: value2
+ymlobj2: {name:zhangsan,age: 20}
+
+# Composite
+peoples:
+  - name: zhangsan
+    age: 22
+  - name: lisi
+    age: 20
+  - {name: wangwu,age: 18}
+
+
+# YAML 各种字符串格式演示
+ymlstr1: str
+
+# '' 中所有转义字符都不生效，除了 ' 自身
+# "str b'ob\n gg"
+ymlstr2: 'str b''ob\n gg'
+
+
+# "" 中转义字符也不生效，但是行末 \ 代表字符串的连续，
+# "aaa\nbbbccc"
+ymlstr3: "aaa\nbbb\
+ ccc\
+ "
+
+# "s\ntr"
+ymlstr4: 's\ntr'       # 注意 \n 不转义，原样输出
+
+# "strRow1 strRow2"
+ymlstr5: strRow1
+ strRow2
+
+# "\nstrRow1\nstrRow2\n"
+ymlstr6: |
+ strRow1
+ strRow2
+ 
+# "strRow1\nstrRow2\n"
+ymlstr7: |+
+  strRow1
+  strRow2
+  
+# "strRow1strRow2"
+ymlstr8: |-
+ strRow1
+ strRow2
+ 
+# "strRow1 strRow2\n"
+ymlstr9: >
+ strRow1
+ strRow2
+ 
+# YAML 引用
+ymlref1: &ref refValue
+ymlref2: *ref             # 相当于 ymlref2: refValue
+
+# 文档块：表示相当于另一个文件
+---

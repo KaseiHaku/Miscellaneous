@@ -80,6 +80,7 @@ ymlstr9: >
 # YAML 引用
 ymlref1: &ref refValue
 ymlref2: *ref             # 相当于 ymlref2: refValue
+ymlref3: ${a.b.c}
 
 # 文档块：表示相当于另一个文件
 ---

@@ -22,10 +22,11 @@ ymlnull: ~          # 相当于 json 中 {"ymlnull": null}
 ymldate: 2019/01/01
 
 # Object Map
-ymlobj1:
+ymlobj1: {name:zhangsan,age: 20}
+ymlobj2:
   key1: value1
   key2: value2
-ymlobj2: {name:zhangsan,age: 20}
+
 
 # Composite
 peoples:

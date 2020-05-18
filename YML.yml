@@ -81,7 +81,7 @@ ymlstr9: >
 # YAML 引用
 ymlref1: &ref refValue
 ymlref2: *ref             # 相当于 ymlref2: refValue
-ymlref3: ${a.b.c}
+ymlref3: ${a.b.c:defaultValue}    # : 后面的表示如果前面引用取不到，那么使用后面的默认值，默认值也可以使用 ${} 取引用
 
 # 文档块：表示相当于另一个文件
 ---

@@ -45,7 +45,7 @@ TLS/HTTPS 加密原理：
         当证书内容被篡改，那么消息摘要肯定会改变。因为不对称加密，公钥私钥只能互解，如果 Hacker 不对消息摘要重新用 CA私钥加密，
         那么 Client 使用 CA公钥解密后的内容就会与计算出来的内容不一致，验证失败。
         
-        数字证书为甚恶魔不会被掉包？
+        数字证书为什么不会被调包？
         数字证书内容部分是明文，Client 知道自己访问的是 www.google.com, 而返回的是 www.kasei.com ,那么肯定有问题。
         
         
@@ -57,6 +57,41 @@ TLS 应用：
     1. CA (Certification Autority) & User Certification: 对互联网上传输的数据进行加密，防止数据泄露 和 中间人攻击
     2. TSA (Timestamp Authority): 时间戳认证，用于对证书的产生时间进行认证，应用领域：金融交易
     
+TLS 实际握手过程：
+    握手阶段所有通信都是明文的
+    1. 客户端发送加密通信请求 
+        ClientHello {
+            protocals: 客户端支持的协议版本
+            random1:
+            encrypts: 客户端支持的加密算法
+            compresses: 客户端支持的压缩算法 
+        }
+    2. 服务器端回应 
+        ServerHello {
+            protocal: 确认使用的协议版本，如果 client 和 server 支持的版本不一致，那么 server 会关闭加密通信
+            random2:
+            encrypt: 确认使用的加密算法
+            compress: 确认使用的压缩算法
+            certificate: 服务器证书，该证书包含除了 CA 根证书以外的证书链
+                         如果这里使用的是 DH 算法，这里发送的是服务器的 DH 参数，RSA 算法不需要这一步
+        }
+    2.5 服务器要求客户端上传证书到服务器，这一步可选，安全性要求高的场景会用到，比如 网银的 U 盘
+    3. 客户端先验证证书是否是可信机构颁发的证书，并校验证书内容
+       如果所有校验都通过，那么客户端回应
+        ClientResponse {
+            random3:
+            notify: 编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送
+            handshakeEndFlag: 客户端握手阶段结束通知
+            hash: 以上所有内容的 hash 值
+        } 
+    4. 服务器根据 random1, random2, random3 生成一个 对称密钥 （会话密钥），并用
+       服务器回应
+        ServerResponse {
+            notify: 编码改变通知，表示随后的信息都将用双方商定的加密方法和密钥发送
+            handshakeEndFlag: 服务器端握手阶段结束通知
+            hash: 以上所有内容的 hash 值
+        }
+    5. 至此，整个握手阶段全部结束。接下来，客户端与服务器进入加密通信，就完全是使用普通的HTTP协议，只不过用"会话密钥"加密内容。
     
     
     

@@ -1,5 +1,0 @@
-注册&认证：
-    账号密码   
-    手机号码
-    Token
-    Certify/Certification       认证/证书

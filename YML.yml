@@ -54,26 +54,26 @@ ymlstr3: "aaa\nbbb\
 # "s\ntr"
 ymlstr4: 's\ntr'       # 注意 \n 不转义，原样输出
 
-# "strRow1 strRow2"
+# "strRow1 strRow2"   
 ymlstr5: strRow1
- strRow2
+ strRow2            # 注意此处单空格缩进
 
-# "\nstrRow1\nstrRow2\n"
+# "\nstrRow1\nstrRow2\n"  使用文字块保留每行之间的 \n
 ymlstr6: |
  strRow1
  strRow2
  
-# "strRow1\nstrRow2\n"
+# "strRow1\nstrRow2\n"  保留文字块末尾的 \n
 ymlstr7: |+
   strRow1
   strRow2
   
-# "strRow1strRow2"
+# "strRow1\nstrRow2"  删除文字块末尾的 \n
 ymlstr8: |-
  strRow1
  strRow2
  
-# "strRow1 strRow2\n"
+# "strRow1 strRow2\n"  使用文字块删除每行之间的 \n，但是每行之间会有空格
 ymlstr9: >
  strRow1
  strRow2

@@ -22,7 +22,14 @@
 Glossary:
     ECDHE:  密钥交换协议，全称：Elliptic Curve Diffie-Hellman Exchange
     
+x509, DSA, RSA 保存到文件使用的编码格式：
+    PEM: Privacy Enhanced Mail              有 --BEGIN --END 报头，两者之间是 Base64 编码的字符串
+    DER: Distinguished Encoding Rules       没有报头，直接是二进制格式存储的
 
-
+常见文件扩展名:
+    .crt, .cer:                             Certificate 证书文件
+    .key:                                   公钥或者私钥文件 
+    .csq:                                   Certificate Signing Request: 证书签名请求文件
+    .pkcs12, .p12, .pfx                     Public-Key Cryptography Standards: 公钥密码学标准： 包含公钥和私钥的二进制格式证书，一般会有一个“提取密码”，来提取内容
 
 

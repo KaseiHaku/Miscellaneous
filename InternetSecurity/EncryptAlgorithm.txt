@@ -22,6 +22,12 @@
 Glossary:
     ECDHE:  密钥交换协议，全称：Elliptic Curve Diffie-Hellman Exchange
     
+
+Key:
+    一个 key 文件携带的字节（.pem .der） = key 本身用于加解密使用的字节 + 额外描述 key 本身信息的字节
+    X509 和 PKCS 标准定义的就是：额外信息有哪些，及其排列组织方式。
+
+    
 x509, DSA Key, RSA Key 保存到文件使用的编码格式：
     PEM: Privacy Enhanced Mail              有 --BEGIN --END 报头，两者之间是 Base64 编码的字符串
     DER: Distinguished Encoding Rules       没有报头，直接是二进制格式存储的

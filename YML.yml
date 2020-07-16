@@ -46,9 +46,9 @@ ymlstr2: 'str b''ob\n gg'
 
 
 # "" 中转义字符也不生效，但是行末 \ 代表字符串的连续，
-# "aaa\nbbbccc"
+# "aaa\nbbbcccddd\n"
 ymlstr3: "aaa\nbbb\
- ccc\
+ ccc\ddd
  "
 
 # "s\ntr"

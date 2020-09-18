@@ -1,11 +1,11 @@
-/** cron 表达式格式：Seconds Minutes Hours DayofMonth Month DayofWeek [Year] 年可以不写
+/** cron 表达式格式：Seconds Minutes Hours DayOfMonth Month DayOfWeek [Year] 年可以不写
  * 每一个域可出现的字符如下：
  * Seconds:可出现", - * /"四个字符，有效范围为0-59的整数
  * Minutes:可出现", - * /"四个字符，有效范围为0-59的整数
  * Hours:可出现", - * /"四个字符，有效范围为0-23的整数
- * DayofMonth:可出现", - * / ? L W C"八个字符，有效范围为0-31的整数
+ * DayOfMonth:可出现", - * / ? L W C"八个字符，有效范围为0-31的整数
  * Month:可出现", - * /"四个字符，有效范围为1-12的整数或JAN-DEc
- * DayofWeek:可出现", - * / ? L C #"四个字符，有效范围为1-7的整数或SUN-SAT两个范围。1表示星期天，2表示星期一， 依次类推
+ * DayOfWeek:可出现", - * / ? L C #"四个字符，有效范围为1-7的整数或SUN-SAT两个范围。1表示星期天，2表示星期一， 依次类推
  * Year:可出现", - * /"四个字符，有效范围为1970-2099年
  * 每一个域都使用数字，但还可以出现如下特殊字符，它们的含义是：
  * (1)*：表示匹配该域的任意值，假如在Minutes域使用*, 即表示每分钟都会触发事件。

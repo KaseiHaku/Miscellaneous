@@ -1,5 +1,5 @@
 URL 标准格式:
-    protocol://user:password@host:port/path;params1=XXX;sessionid=1234?query1=value1&ampquery2=value2#frag
+    protocol://user:password@host-one:port/path;params1=XXX;sessionid=1234?query1=value1&ampquery2=value2#frag
     URL 地址 domain 中可以使用中划线 - 但是不能使用下划线 _ ,
 
 Http 协议方法：idempotent(幂等)，表示多次执行相同的操作，结果一致

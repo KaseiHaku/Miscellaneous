@@ -1,3 +1,54 @@
+URL 标准格式:
+    protocol://user:password@host:port/path;params1=XXX;sessionid=1234?query1=value1&ampquery2=value2#frag
+    URL 地址 domain 中可以使用中划线 - 但是不能使用下划线 _ ,
+
+Http 协议方法：idempotent(幂等)，表示多次执行相同的操作，结果一致
+    GET         安全且幂等，向服务器请求特定的资源，并在响应体中返回请求的资源
+    POST        不安全且不幂等，创建资源，使用服务端（自动生成）的实例号创建资源
+    PUT         不安全但幂等，修改资源，向指定资源位置上传其最新内容
+    DELETE      不安全但幂等，请求服务器删除 Request-URI 所标识的资源 
+
+    HEAD        安全且幂等，相当于 GET 请求，但是只返回响应头 
+    OPTIONS     返回服务器针对特定资源所支持的HTTP请求方法。也可以利用向Web服务器发送'*'的请求来测试服务器的功能性
+    PATCH       表示对资源进行部分修改
+    TRACE       回显服务器收到的请求，主要用于测试或诊断
+    CONNECT     使用代理的时候用于连接代理服务器
+
+Request 请求格式：
+    请求方法 空格 URL 空格 协议版本 回车符 换行符
+    头部字段名:值 回车符 换行符
+    ...
+    头部字段名:值 回车符 换行符
+    回车符 换行符
+    请求数据
+    
+Response 返回格式：
+    协议版本 空格 状态码 空格 状态名 回车符 换行符
+    头部字段名:值 回车符 换行符
+    ...
+    头部字段名:值 回车符 换行符
+    回车符 换行符
+    响应正文
+
+Web 乱码问题
+    URL 中包含中文，后台获取参数值乱码，在 %TOMCAT_HOME%/conf/Server.xml <Connector/> 标签中添加 URIEncoding="UTF-8" 属性，
+    该方法只对 Get 方法有效，Post 请求正文中编码还是 ISO8859-1 编码格式的
+    useBodyEncodingForURI="true" 表示只对 URL 参数部分编码，即 ? 和 # 之间的字符采用 URIEncoding="UTF-8" 配置的编码格式编码
+    <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" URIEncoding="UTF-8" useBodyEncodingForURI="true"/>
+    
+    修改 请求正文 的字符编码格式
+    请求头：Content-Type
+
+
+WEB 运行模式介绍：
+1、client 发送一个 HTTP 头文件到指定服务器;头文件里包括URL、浏览器可接收编码格式、请求正文编码等
+2、server 接收到头文件后，根据头文件所含内容返回指定数据
+		如果请求的文件是.html则直接返回该文件给client
+		如果请求的文件是.php则现在server上执行php脚本后生成纯html文件返回给client
+3、POST 和 GET 请求都需要把数据传送到确定的php文件中，server会在接受到请求后运行该php文件，并以纯html格式返回
+
+
+
 # 以下 请求头 和 响应头 按顺序配对
 
 Request Header:

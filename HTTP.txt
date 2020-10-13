@@ -1,4 +1,5 @@
 URL 标准格式:
+    scheme://userinfo@host:port/path?query#fragment
     protocol://user:password@host-one:port/path;params1=XXX;sessionid=1234?query1=value1&ampquery2=value2#frag
     URL 地址 domain 中可以使用中划线 - 但是不能使用下划线 _ ,
 

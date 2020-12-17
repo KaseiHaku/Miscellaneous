@@ -10,8 +10,18 @@
 事务隔离级别
     术语简介
         脏读：读取了还没有提交的数据   
-        不可重复读：多线程环境下，两次读取相同数据，得到不同的结果   
-        幻读：两次读取相同数据的结果不同   
+        不可重复读：事务 A 前后两次相同的 select ，得到同一 row 的数据不同   
+        幻读：重复读的特殊情况，事务 A 前后两次相同的 select ，得到 row 的条数不同，即其他事务新插入了一条符合 select 条件的数据
+        快照读： 读取 快照/缓存 中的数据， select ...;  为快照读
+        当前读： 永远读取当前最新的数据，select ... lock in share mode; selct ... for update; insert; delete; update; 为当前读
+        行锁： 只锁对应的行数据，不锁整张表
+            S 锁(shared lock/共享锁/读锁)： 
+                若事务 A 对 row1 加上 S 锁，那么事务 B 可以对 row1 进行 查，但是不能 增删改
+                sql> select ... lock in share mode; 加 S 锁
+            X 锁(exclusive lock/排他锁/写锁)： 
+                若事务 A 对 row1 加上 X 锁，那么事务 B 不能对 row1 进行 增删改查
+                sql> select ... for update; 加 X 锁
+                sql> insert; delete; update; 加 X 锁
     隔离级别
         Read uncommitted 读未提交：     
             B 事务可以读取 A 事务没有提交的数据。且 B 事务可以在 A 事务进行时执行任何操作（CURD）  
@@ -25,6 +35,9 @@
         Serializable 序列化：         
             当 A 事务开始后，B 事务不能对该记录进行任何操作，包括读操作
             不会出现任何问题
+    
+    坑：
+        1. 即使 事务隔离级别 为 可重复读，事务A select 如果不加 S 或者 X 锁，那么 其他 事务B 依然能够修改 事务A select 出来的 row 的数据
 
 Distributed Transaction 分布式事务解决方案
     分布式事务解决方案基本思路：  

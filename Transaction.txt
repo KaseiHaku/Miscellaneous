@@ -22,6 +22,8 @@
                 若事务 A 对 row1 加上 X 锁，那么事务 B 不能对 row1 进行 增删改查
                 sql> select ... for update; 加 X 锁
                 sql> insert; delete; update; 加 X 锁
+        MySQL:
+            grap lock(区间锁): 加在 索引 上的锁，因为 insert delete 当有索引时，都会修改索引，在 索引 上加锁，就避免了 加锁期间的 insert 和 delete，从而避免 幻读
     隔离级别
         Read uncommitted 读未提交：     
             B 事务可以读取 A 事务没有提交的数据。且 B 事务可以在 A 事务进行时执行任何操作（CURD）  

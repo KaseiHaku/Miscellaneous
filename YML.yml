@@ -11,9 +11,9 @@ spring:
 # Array List Set
 ymlary1: [1, 2, 3]
 ymlary2:
-    - 1
-    - 2
-    - 3
+  - 1
+  - 2
+  - 3
 
 # Null
 ymlnull: ~          # 相当于 json 中 {"ymlnull": null}

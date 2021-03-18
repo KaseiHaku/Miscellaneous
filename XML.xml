@@ -1,1 +1,34 @@
-<root></root>
+<?xml version="1.0" encoding="utf-8"?><!-- xml 文件声明 -->
+
+<!-- 字符实体 
+&lt;        <	    less than
+&gt;        >	    greater than
+&amp;       &	    ampersand
+&apos;      '	    apostrophe
+&quot;      "	    quotation mark
+-->
+
+<!-- DTD 
+DOCTYPE 声明了是对外部 DTD 文件的引用
+xsi:schemaLocation:
+    xsi:schemaLocation 为 xmlns:xsi 命名空间中的 schemaLocation 属性, 因为我们先声明了 xmlns:xsi 命名空间, 所以他才写作 xsi:schemaLocation, 不然就单单是 schemaLocation
+    xsi:schemaLocation 属性中的 url 两两一对, 空格分隔, 用于描述 namespace 对应的 xsd 所在的位置
+-->
+<!DOCTYPE note SYSTEM "Note.dtd">
+<root xmlns="http://default/namespace" 
+      xmlns:hhh="http://hhh/namespace"
+      xmlns:xsi="http://xsi/namespace"
+      xsi:schemaLocation="
+                          http://default/namespace http://default/namespace.xsd
+                          http://hhh/namespace http://hhh/namespace.xsd
+                          http://xsi/namespace http://xsi/namespace.xsd
+                          ">
+    
+    
+    
+    
+    <!-- 属性值中需要使用字符实体 -->
+    <xxx atr1="a'b" atr2='a"b' atr3="a&quot;b'c"> 
+    <![CDATA[ a>b<c ' " & ]]>
+    <hhh:xxx></hhh:xxx><!-- 表示 hhh 命名空间下的 xxx 标签 -->
+</root>

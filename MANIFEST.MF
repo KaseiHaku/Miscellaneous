@@ -1,0 +1,16 @@
+cmt001: v # 格式：
+cmt002: v #  标准MF格式: Property-Name: value
+cmt003: v #  OSGi的MF格式: Property-Name: clause(, clause)*
+cmt004: v #               clause ::= target(;parameter)*(,target2(;parameter)*)*
+cmt005: v #               parameter ::= attribute=value | directive:=value
+cmt006: v # 注意事项：
+cmt007: v #  属性名后的冒号和属性值之间, 留有一个空格.
+cmt008: v #  属性名规范：不区分大小写; name 可以是字母,数字,下划线('_'),连字符('-');
+cmt009: v #  单行不能超过72个字符; 超过时另起一行并必须以一个空格开始, 表示和上一行连接在一起;
+
+
+Premain-Class: kasei.springcloud.basic.common.bytecode.KaseiJavaAgent
+Agent-Class: kasei.springcloud.basic.common.bytecode.KaseiJavaAgent
+Can-Redefine-Classes: true                  # 表示当前 agent 可以重定义 class
+Can-Retransform-Classes: true               # 表示当前 agent 可以重新改变 class
+Can-Set-Native-Method-Prefix: true          # 表示当前 agent 可以设置 native 方法的 prefix

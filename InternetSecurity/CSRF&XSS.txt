@@ -1,0 +1,28 @@
+CSRF(Cross-site request forgery):
+    主要原因：浏览器在给同源域名发送请求时，会自动带上该域名的 Cookie
+    攻击步骤：
+        1. User 访问正常的网站 A，并登陆，获取 Cookie 存在浏览器
+        2. User 访问恶意网站 B，
+        3. 恶意网站自动向 A 发送一个请求，执行某个动作，而因为 浏览器访问同源域名时的 Cookie 策略，自动带上 A 原先登陆的 Cookie
+        4. A 的服务器只认 Cookie，认为是 User 发出的请求，执行动作，
+        5. 完成攻击
+    预防方法：
+        判断 HttpHeader 中的 Origin Header(来源域名), Referer Header(引用域名)
+        一个额外的 CSRF Token，不放在 Cookie 里，不会被浏览器自动发送到服务器，发请求时手动添加到请求中
+        双重 Cookie :
+            1. 登陆时，服务器产生 randomCode 放入 Cookie 中
+            2. 请求时，要求 client 将 randomCode 放在请求中一起传过来
+            3. 服务器获取 Cookie 中的 randomCode 和 请求中的 randomCode 对比，一样表示没问题，否则拒绝
+        Samesite Cookie: A 站的 Cookie 只有在 A 站发请求才会携带，B 站发请求到 A 站不会携带该 Cookie
+    
+XSS(Cross-site scripting):
+    在页面上注入恶意代码(包括 JS, HTML, ...) 相当于后端的 SQL 注入
+
+原理：
+    DOM Based XSS
+    1. 很多 Web 页面会直接取 URL 的参数插入到页面中
+    2. 黑客在 URL 参数中写入 HTML 代码 或者 JS 代码，达到偷偷窃取用户信息等操作
+    
+    Stored XSS
+    1. 网站需要将用户输入的信息保存到数据，比如博客
+    2. 黑客在编写的博客中写入 HTML 代码 或者 JS 代码，使所有访问该博客的用户遭受代码攻击

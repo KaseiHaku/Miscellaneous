@@ -1,12 +1,14 @@
 # Develop 
 ## Programming
-- OPP: Procedure Oriented Programming       面向过程编程          C
-- OOP: Object Oriented Programming          面向对象编程          Java
-- AOP: Aspect Oriented Programming          面向切面编程          Spring AOP
-- Imperative Programming                    命令式编程            C, Java
-- Functional Programming                    函数式编程            JS
-- Reactive Programming                      响应式编程            JavaReactive
-- 显式永远优于隐式
+> 1. Programming Model:
+>    - OPP: Procedure Oriented Programming       面向过程编程          C
+>    - OOP: Object Oriented Programming          面向对象编程          Java
+>    - AOP: Aspect Oriented Programming          面向切面编程          Spring AOP
+> 2. Programming Paradigm:
+>    - Imperative Programming                    命令式编程            C, Java
+>    - Functional Programming                    函数式编程            JS
+>    - Reactive Programming                      响应式编程            JavaReactive
+> 3. 显式永远优于隐式
 
 ## Debug
 - 找 bug 永远不要尝试通过结果, 反推问题所在。因为 3+4=7, 但是给你 7 得到这个结果的可能情况太多,根本找不到为什么的, 所以永远不要尝试反推

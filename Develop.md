@@ -1,5 +1,5 @@
 # Develop 
-## Programing
+## Programming
 - OPP: Procedure Oriented Programming       面向过程编程          C
 - OOP: Object Oriented Programming          面向对象编程          Java
 - AOP: Aspect Oriented Programming          面向切面编程          Spring AOP

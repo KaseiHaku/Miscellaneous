@@ -1,28 +1,37 @@
-加密算法：
-    不可逆加密算法：根据密文无法重新得到原文的算法，主要用于保证数据不被篡改
+Encrypt Algorithm：加密算法
+    Irreversible：不可逆加密算法，根据密文无法重新得到原文的算法，主要用于保证数据不被篡改
         MD5: 对数据进行消息摘要，主要用于保证数据不被篡改 @Deprecated
-        SHA-2：Hash 算法
-    可逆加密算法：根据密文能重新得到原文的算法
-        对称加密算法：加密和解密共用同一套秘钥
+        SHA：Hash Algorithm，用于对数据完整性校验
+    Reversible：可逆加密算法，根据密文能重新得到原文的算法
+        Symmetric：对称加密算法，加密和解密共用同一套秘钥
             DES: 数据加密标准 @Deprecated
-            AES: 高级加密标准  
-        不对称加密算法：具有公钥和私钥，公钥和私钥是一一对应关系，公钥加密的数据只有私钥能解，私钥加密的数据只有公钥能解，不能公钥解公钥，私钥解私钥，
+            AES: Advanced Encryption Standard, 高级加密标准，对称加密算法
+            CTR：Counter Mode，计数器模式，解决相同明文会得到相同密文的问题，但不保证消息完整性
+            MAC: Message Authentication Code, 消息认证码, 用于保证消息的完整性，
+            GMAC: Galois message authentication code mode, 伽罗瓦消息验证码
+            GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式
+        Asymmetric：不对称加密算法，具有公钥和私钥，公钥和私钥是一一对应关系，公钥加密的数据只有私钥能解，私钥加密的数据只有公钥能解，不能公钥解公钥，私钥解私钥，
                       （虽然公私钥可以互解，但是不能互换，因为知道私钥反推出公钥很简单，但是知道公钥反推出私钥很困难）
             RSA: 三个创始人的姓氏首字母 @Deprecated
             ECC: Elliptic Curves Cryptography, 椭圆曲线密码编码学
-            DSA: Digital Signature Algorithm, 数据签名，对数据用不对称加密算法的私钥加密，
-                    那么所有拥有公钥的人都能得到这份数据的原文，这样保证该数据是一个人所有，因为私钥是个人保留的
 
-2019 密钥交换协议有以下几种：
-    RSA 密钥交换 + 无需签名
-    ECDHE 密钥交换 + RSA 签名
-    ECDHE 密钥交换 + ECDSA 签名: 目前最好的方式
+Key Exchange Protocol: 密钥交换协议
+    DHE: Diffie-Hellman Exchange, 迪菲-赫尔曼密钥交换协议
+    ECDHE: Elliptic Curve Diffie-Hellman Exchange
+    
+    2019 密钥交换协议有以下几种：
+        RSA 密钥交换 + 无需签名
+        ECDHE 密钥交换 + RSA 签名
+        ECDHE 密钥交换 + ECDSA 签名: 目前最好的方式
     
     RSA 证书可以用于 RSA 密钥交换（RSA 非对称加密）或 ECDHE 密钥交换（RSA 非对称签名）；而 ECC 证书只能用于 ECDHE 密钥交换（ECDSA 非对称签名）
 
-Glossary:
-    ECDHE:  密钥交换协议，全称：Elliptic Curve Diffie-Hellman Exchange
-    
+Digital Signature Algorithm: DSA
+    数据签名，对数据用不对称加密算法的私钥加密，那么所有拥有公钥的人都能得到这份数据的原文，这样保证该数据是一个人所有，因为私钥是个人保留的
+   
+Prefect Forward Secrecy: 
+    完美前向保密性：指长期使用的 主密钥 泄漏不会导致过去的 会话密钥 泄漏 
+
 
 Key:
     一个 key 文件携带的字节（.pem .der） = key 本身用于加解密使用的字节 + 额外描述 key 本身信息的字节

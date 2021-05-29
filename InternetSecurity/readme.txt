@@ -6,10 +6,11 @@ Encrypt Algorithm：加密算法
         Symmetric：对称加密算法，加密和解密共用同一套秘钥
             DES: 数据加密标准 @Deprecated
             AES: Advanced Encryption Standard, 高级加密标准，对称加密算法
-            CTR：Counter Mode，计数器模式，解决相同明文会得到相同密文的问题，但不保证消息完整性
-            MAC: Message Authentication Code, 消息认证码, 用于保证消息的完整性，
-            GMAC: Galois message authentication code mode, 伽罗瓦消息验证码
-            GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式
+                CTR：Counter Mode，计数器模式，解决相同明文会得到相同密文的问题，但不保证消息完整性
+                MAC: Message Authentication Code, 消息认证码, 用于保证消息的完整性，
+                GMAC: Galois message authentication code mode, 伽罗瓦消息验证码
+                GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式
+            ChaCha20: google 出的对称加密算法
         Asymmetric：不对称加密算法，具有公钥和私钥，公钥和私钥是一一对应关系，公钥加密的数据只有私钥能解，私钥加密的数据只有公钥能解，不能公钥解公钥，私钥解私钥，
                       （虽然公私钥可以互解，但是不能互换，因为知道私钥反推出公钥很简单，但是知道公钥反推出私钥很困难）
             RSA: 三个创始人的姓氏首字母 @Deprecated

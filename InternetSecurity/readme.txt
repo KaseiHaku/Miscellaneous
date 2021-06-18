@@ -6,15 +6,39 @@ Encrypt Algorithm：加密算法
         Symmetric：对称加密算法，加密和解密共用同一套秘钥
             DES: 数据加密标准 @Deprecated
             AES: Advanced Encryption Standard, 高级加密标准，对称加密算法
-                CTR：Counter Mode，计数器模式，解决相同明文会得到相同密文的问题，但不保证消息完整性
-                MAC: Message Authentication Code, 消息认证码, 用于保证消息的完整性，
-                GMAC: Galois message authentication code mode, 伽罗瓦消息验证码
-                GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式
             ChaCha20: google 出的对称加密算法
         Asymmetric：不对称加密算法，具有公钥和私钥，公钥和私钥是一一对应关系，公钥加密的数据只有私钥能解，私钥加密的数据只有公钥能解，不能公钥解公钥，私钥解私钥，
                       （虽然公私钥可以互解，但是不能互换，因为知道私钥反推出公钥很简单，但是知道公钥反推出私钥很困难）
             RSA: 三个创始人的姓氏首字母 @Deprecated
             ECC: Elliptic Curves Cryptography, 椭圆曲线密码编码学
+
+Encrypt Mode: 加密模式
+    ECB: Electronic Mode，电子密码本模式;
+         当密文被篡改时，解密后对应的明文分组也会出错，且解密者察觉不到密文被篡改了。
+         也就是说，ECB不能提供对密文的完整性校验。因此，在任何情况下都不推荐使用ECB模式。
+         
+    CBC: Cipher Block Chaining, 密码分组链接模式;
+         是一种循环模式，前一个分组的密文和当前分组的明文异或操作后再加密，这样做的目的是增强破解难度。
+         
+    CTR：Counter Mode，计数器模式;
+         解决相同明文会得到相同密文的问题，但不保证消息完整性
+         
+    CFB: Cipher FeedBack, 密码反馈模式; 
+         实际上是一种反馈模式，目的也是增强破解的难度     
+         
+    OFB: Output FeedBack，输出反馈模式;
+         实际上是一种反馈模式，目的也是增强破解的难度。
+         
+    MAC: Message Authentication Code, 消息认证码, 用于保证消息的完整性，
+    GMAC: Galois message authentication code mode, 伽罗瓦消息验证码
+    GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式     
+    
+Padding Mode: 填充模式
+    NoPadding
+    PKCS5Padding
+    PKCS7Padding
+    
+
 
 Key Exchange Protocol: 密钥交换协议
     DHE: Diffie-Hellman Exchange, 迪菲-赫尔曼密钥交换协议

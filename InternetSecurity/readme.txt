@@ -1,16 +1,28 @@
-Encrypt Algorithm：加密算法
-    Irreversible：不可逆加密算法，根据密文无法重新得到原文的算法，主要用于保证数据不被篡改
+Message Digest: 消息摘要
+    Feature：
+        Irreversible：不可逆加密算法，根据密文无法重新得到原文的算法，主要用于保证数据不被篡改
+    Algorithm：
         MD5: 对数据进行消息摘要，主要用于保证数据不被篡改 @Deprecated
-        SHA：Hash Algorithm，用于对数据完整性校验
-    Reversible：可逆加密算法，根据密文能重新得到原文的算法
-        Symmetric：对称加密算法，加密和解密共用同一套秘钥
+        SHA：Secure Hash Algorithm，用于对数据完整性校验
+
+Encrypt：加密
+    Feature:
+        Reversible：可逆加密算法，根据密文能重新得到原文的算法
+    
+    Symmetric：
+        对称加密算法，即：加密和解密共用同一套秘钥
+        Algorithm：
             DES: 数据加密标准 @Deprecated
             AES: Advanced Encryption Standard, 高级加密标准，对称加密算法
             ChaCha20: google 出的对称加密算法
-        Asymmetric：不对称加密算法，具有公钥和私钥，公钥和私钥是一一对应关系，公钥加密的数据只有私钥能解，私钥加密的数据只有公钥能解，不能公钥解公钥，私钥解私钥，
-                      （虽然公私钥可以互解，但是不能互换，因为知道私钥反推出公钥很简单，但是知道公钥反推出私钥很困难）
+            
+    Asymmetric：
+        不对称加密算法，具有公钥和私钥，公钥和私钥是一一对应关系，公钥加密的数据只有私钥能解，私钥加密的数据只有公钥能解，不能公钥解公钥，私钥解私钥，
+        （虽然公私钥可以互解，但是不能互换，因为知道私钥反推出公钥很简单，但是知道公钥反推出私钥很困难）
+        
+        Algorithm：
             RSA: 三个创始人的姓氏首字母 @Deprecated
-            ECC: Elliptic Curves Cryptography, 椭圆曲线密码编码学
+            ECIES: 基于 ECC(Elliptic Curves Cryptography, 椭圆曲线密码编码学) 的加密算法
 
 Encrypt Mode: 加密模式
     ECB: Electronic Mode，电子密码本模式;
@@ -31,14 +43,18 @@ Encrypt Mode: 加密模式
          
     MAC: Message Authentication Code, 消息认证码, 用于保证消息的完整性，
     GMAC: Galois message authentication code mode, 伽罗瓦消息验证码
-    GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式     
+    GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式    
+    AEAD: Authenticated Encryption with Associated Data 
     
 Padding Mode: 填充模式
     NoPadding
     PKCS5Padding
     PKCS7Padding
     
-
+Digital Signature Algorithm: DSA
+    数字签名，对数据用不对称加密算法的私钥加密，那么所有拥有公钥的人都能得到这份数据的原文，这样保证该数据是一个人所有，因为私钥是个人保留的
+    Algorithm:
+        ECDSA: 基于 ECC 的 数字签名算法
 
 Key Exchange Protocol: 密钥交换协议
     DHE: Diffie-Hellman Exchange, 迪菲-赫尔曼密钥交换协议
@@ -51,8 +67,7 @@ Key Exchange Protocol: 密钥交换协议
     
     RSA 证书可以用于 RSA 密钥交换（RSA 非对称加密）或 ECDHE 密钥交换（RSA 非对称签名）；而 ECC 证书只能用于 ECDHE 密钥交换（ECDSA 非对称签名）
 
-Digital Signature Algorithm: DSA
-    数据签名，对数据用不对称加密算法的私钥加密，那么所有拥有公钥的人都能得到这份数据的原文，这样保证该数据是一个人所有，因为私钥是个人保留的
+
    
 Prefect Forward Secrecy: 
     完美前向保密性：指长期使用的 主密钥 泄漏不会导致过去的 会话密钥 泄漏 

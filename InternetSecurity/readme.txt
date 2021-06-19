@@ -32,15 +32,16 @@ Encrypt Mode: 加密模式
     CBC: Cipher Block Chaining, 密码分组链接模式;
          是一种循环模式，前一个分组的密文和当前分组的明文异或操作后再加密，这样做的目的是增强破解难度。
          
-    CTR：Counter Mode，计数器模式;
-         解决相同明文会得到相同密文的问题，但不保证消息完整性
-         
     CFB: Cipher FeedBack, 密码反馈模式; 
          实际上是一种反馈模式，目的也是增强破解的难度     
          
     OFB: Output FeedBack，输出反馈模式;
          实际上是一种反馈模式，目的也是增强破解的难度。
-         
+    
+    CTR：Counter Mode，计数器模式;
+         解决相同明文会得到相同密文的问题，但不保证消息完整性
+
+验证码模式：
     MAC: Message Authentication Code, 消息认证码, 用于保证消息的完整性，
     GMAC: Galois message authentication code mode, 伽罗瓦消息验证码
     GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式    

@@ -31,21 +31,32 @@ Response 返回格式：
     回车符 换行符
     响应正文
 
-Web 乱码问题
-    URL 中包含中文，后台获取参数值乱码，在 %TOMCAT_HOME%/conf/Server.xml <Connector/> 标签中添加 URIEncoding="UTF-8" 属性，
-    该方法只对 Get 方法有效，Post 请求正文中编码还是 ISO8859-1 编码格式的
-    useBodyEncodingForURI="true" 表示只对 URL 参数部分编码，即 ? 和 # 之间的字符采用 URIEncoding="UTF-8" 配置的编码格式编码
-    <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" URIEncoding="UTF-8" useBodyEncodingForURI="true"/>
-    
-    修改 请求正文 的字符编码格式
-    请求头：Content-Type
-
+Web 乱码问题:
+    URL 地址：
+        根据 http 协议规定 URL 的字符集必须是 ISO-8859-1 编码格式的，URL 本身编码不确定，服务端根本无法处理。
+        URL 中如果包含中文，则必须转码成 ISO-8859-1 字符集中的字符
+        
+        如果乱码，可以如下处理：
+            URL 中包含中文，后台获取参数值乱码，在 %TOMCAT_HOME%/conf/Server.xml <Connector/> 标签中添加 URIEncoding="UTF-8" 属性，
+            该方法只对 Get 方法有效，Post 请求正文中编码还是 ISO8859-1 编码格式的
+            useBodyEncodingForURI="true" 表示只对 URL 参数部分编码，即 ? 和 # 之间的字符采用 URIEncoding="UTF-8" 配置的编码格式编码
+            <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" URIEncoding="UTF-8" useBodyEncodingForURI="true"/>
+        
+    Http Header:
+        根据 http 协议规定 Http Header 中的字符同样必须是 ISO-8859-1 格式的，因为 Http Header 包含 Body 的编码信息，如果本身编码不确定，服务端根本无法处理
+        
+        后端读取的时候，需要重新编码为 UTF-8, 否则会出现 "abc".equals("abc") == false 的情况，
+        注：括号内的 abc 为从 Http Header 中获取的。sout() 的时候两个看着一模一样，但是底层二进制编码不一样
+        
+    Http Body:
+        根据请求头 Content-Type 来确定 Body 的编码格式
+   
 
 WEB 运行模式介绍：
 1、client 发送一个 HTTP 头文件到指定服务器;头文件里包括URL、浏览器可接收编码格式、请求正文编码等
 2、server 接收到头文件后，根据头文件所含内容返回指定数据
-		如果请求的文件是.html则直接返回该文件给client
-		如果请求的文件是.php则现在server上执行php脚本后生成纯html文件返回给client
+        如果请求的文件是.html则直接返回该文件给client
+        如果请求的文件是.php则现在server上执行php脚本后生成纯html文件返回给client
 3、POST 和 GET 请求都需要把数据传送到确定的php文件中，server会在接受到请求后运行该php文件，并以纯html格式返回
 
 

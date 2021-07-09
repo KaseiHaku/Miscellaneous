@@ -43,7 +43,8 @@ Web 乱码问题:
             <Connector port="8080" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443" URIEncoding="UTF-8" useBodyEncodingForURI="true"/>
         
     Http Header:
-        根据 http 协议规定 Http Header 中的字符同样必须是 ISO-8859-1 格式的，因为 Http Header 包含 Body 的编码信息，如果本身编码不确定，服务端根本无法处理
+        1. 根据 http 协议规定 Http Header 中的字符同样必须是 ISO-8859-1 格式的，因为 Http Header 包含 Body 的编码信息，如果本身编码不确定，服务端根本无法处理
+        2. 根据 http 协议规定 Http Header 中的 Field 字段名是不区分大小写的，但是 Http Method 很多情况下是区分的，最好用大写
         
         后端读取的时候，需要重新编码为 UTF-8, 否则会出现 "abc".equals("abc") == false 的情况，
         注：括号内的 abc 为从 Http Header 中获取的。sout() 的时候两个看着一模一样，但是底层二进制编码不一样

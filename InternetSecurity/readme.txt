@@ -3,9 +3,12 @@ Message Digest: 消息摘要
         Irreversible：不可逆加密算法，根据密文无法重新得到原文的算法，主要用于保证数据不被篡改
     Algorithm：
         MD5: 对数据进行消息摘要，主要用于保证数据不被篡改 @Deprecated
-        SHA：Secure Hash Algorithm，用于对数据完整性校验
+        SHA：Secure Hash Algorithm，用于对数据完整性校验，以下算法破解难度依次递增
+            pbkdf2:  
             bcrypt:
-            pbkdf2: 
+            scrypt:
+            argon2: argon2i(对抗侧信道攻击的最安全选择), argon2d(抵抗 GPU 破解攻击的最安全选择), argon2id(兼而有之，推荐)
+            
 
 Encrypt：加密
     Feature:

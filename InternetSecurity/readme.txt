@@ -4,7 +4,7 @@ Message Digest: 消息摘要
     Algorithm：
         MD5: 对数据进行消息摘要，主要用于保证数据不被篡改 @Deprecated
         SHA：Secure Hash Algorithm，用于对数据完整性校验
-            bcypt:
+            bcrypt:
             pbkdf2: 
 
 Encrypt：加密

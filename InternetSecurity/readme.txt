@@ -7,7 +7,7 @@ Message Digest: 消息摘要
             pbkdf2:  
             bcrypt:
             scrypt:
-            argon2: argon2i(对抗侧信道攻击的最安全选择), argon2d(抵抗 GPU 破解攻击的最安全选择), argon2id(兼而有之，推荐)
+            argon2: argon2i(对抗 tradeoff[侧信道攻击] 的最安全选择), argon2d(抵抗 GPU 破解攻击的最安全选择), argon2id(兼而有之，推荐)
             
 
 Encrypt：加密

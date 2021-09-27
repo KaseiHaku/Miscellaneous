@@ -1,20 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?><!-- xml 文件声明 -->
 
-<!-- 字符实体 
-&lt;        <	    less than
-&gt;        >	    greater than
-&amp;       &	    ampersand
-&apos;      '	    apostrophe
-&quot;      "	    quotation mark
+<!-- 
+    字符实体 
+    &lt;        <       less than
+    &gt;        >       greater than
+    &amp;       &       ampersand
+    &apos;      '       apostrophe
+    &quot;      "       quotation mark
 -->
 
-<!-- DTD 
-DOCTYPE 声明了是对外部 DTD 文件的引用
-xsi:schemaLocation:
-    xsi:schemaLocation 为 xmlns:xsi 命名空间中的 schemaLocation 属性, 因为我们先声明了 xmlns:xsi 命名空间, 所以他才写作 xsi:schemaLocation, 不然就单单是 schemaLocation
-    xsi:schemaLocation 属性中的 url 两两一对, 空格分隔, 用于描述 namespace 对应的 xsd 所在的位置
+<!-- 
+    DOCTYPE         声明了是对外部 DTD 文件的引用
+    root            表示当前文档根元素必须是 root
+    SYSTEM          表示 .dtd 文件在当前 XML 文档外部，如果不在外部，那么
+    "Note.dtd"      表示 .dtd 文件所在的位置
 -->
-<!DOCTYPE note SYSTEM "Note.dtd">
+<!DOCTYPE root SYSTEM "Note.dtd"> 
+ <!DOCTYPE root [dtd]>     <!-- dtd 在当前文档内部的格式  -->
+
+<!-- 
+    xsi:schemaLocation:
+        xsi:schemaLocation 为 xmlns:xsi 命名空间中的 schemaLocation 属性, 因为我们先声明了 xmlns:xsi 命名空间, 所以他才写作 xsi:schemaLocation, 不然就单单是 schemaLocation
+        xsi:schemaLocation 属性中的 url 两两一对, 空格分隔, 用于描述 namespace 对应的 xsd 所在的位置
+-->
 <root xmlns="http://default/namespace" 
       xmlns:hhh="http://hhh/namespace"
       xmlns:xsi="http://xsi/namespace"

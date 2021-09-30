@@ -1,0 +1,44 @@
+Open Authorization 中的概念：
+    Resource Owner              资源拥有者
+    Application                 第三方应用
+    Authorization Server        授权服务器
+    Resource Server             资源服务器
+    
+    资源拥有者（Resource Owner）在使用第三方应用（Application）时，
+    通过授权服务器（Authorization Server）授予第三方应用（Application）在资源服务器（Resource Server）访问某些资源的权限。
+
+
+Procedure:
+    # 预注册步骤
+    1. AppA 预先在 GitHub 中注册自己的应用，注册参数包括：
+        clientId:       AppA 的唯一 ID，帮助 GitHub 识别第三方应用到底是谁
+        redirectUri:    在用户授权成功后，将会被重定向到的回调地址，防止黑客换成恶意网站地址
+        scope:          这个参数指定了希望用户授予的权限范围，GitHub 会提供一系列的 Tag 来表示不同的权限范围，改参数一般会有多个 Tag 
+        state:          该值会在 授权成功后 原封不动的拼接在 redirectUri 后面， 随机字符串 state的用处： 用来抵御 CSRF 攻击， 
+        
+    # 授权步骤
+    2. 用户点击 AppA 中的一个按钮，AppA 会重定向到 
+        https://github.com/oauth/authorize?
+            clientId=1234               # 预注册的值
+            &redirectUri=https://AppA.com/oauth/github/callback     # 预注册的值
+            &scope=tag1,tag2            # 权限范围标志
+            &state=1234                 # 当前 AppA 的自定义内容
+    
+    3. GitHub 在收到请求后，将请求参数 和 预注册值 进行对比，相同则继续进行授权操作
+    4. GitHub 授权结束后，会重定向到 
+        https://AppA.com/oauth/github/callback?
+            code=qqqq                   # Authorization code （授权码），之后这个Authorization code 将会被用来获得最终的 Access token       
+            &state=1234                 # 原样返回
+    5. AppA 获取上述重定向请求后，根据 code, state 参数，
+       判断 state 是否是原本发出去的内容，如果不是，则拒绝执行后续步骤
+       如果 state 相同，则给 GitHub Authorization Server 发送请求，获取 Access Token，请求 URL 为：
+        https://github.com/oauth/accessToken?
+            code=qqqq                   # Authorization code （授权码）
+            &clientId=                  # 预注册的值 
+            &clientSecret=              # 在 AppA 注册到 GitHub 时，GitHub 会生成这个字符串，用于 GitHub Authorization Server 验证 Application后端的身份
+            &redirectUri=               # 预注册的值
+    6. GitHub Authorization Server 判断请求中所有参数是否都是对的，如果错的则报错
+    6. AppA 获取 Access Token 成功后，
+       AppA 会拿着 Access Token 去访问  Resource Server ，
+            
+            

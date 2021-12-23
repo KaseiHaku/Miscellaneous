@@ -111,7 +111,8 @@ File Format Specification: 规定文件中，各个字符的排列顺序，需�
     .pub.key.der:                           公钥 二进制  格式
     .pub.key.pem:                           公钥 base64 格式
     
-    .crt, .cer:                             CA 颁发的 Certificate 证书文件
+    .crt, .cer:                             CA 颁发的 Certificate 证书文件，仅仅包含公钥，没有私钥
+    .pfx                                    主要用于 windows 平台，浏览器可以使用，也是 包含证书/公钥 和 私钥，获取私钥需要密码才可以
     .csr, p10:                              Certificate Signing Request: 证书签名请求文件, 
                                             申请人 向 CA 发送证书申请的 请求文件，CA 根据 请求文件 的内容，颁发 证书 给申请人
                                             

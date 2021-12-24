@@ -8,7 +8,7 @@ Message Digest: 消息摘要
             bcrypt:
             scrypt:
             argon2: argon2i(对抗 tradeoff[侧信道攻击] 的最安全选择), argon2d(抵抗 GPU 破解攻击的最安全选择), argon2id(兼而有之，推荐)
-            
+        
 
 Encrypt：加密
     Feature:
@@ -46,11 +46,12 @@ Encrypt Mode: 加密模式
     CTR：Counter Mode，计数器模式;
          解决相同明文会得到相同密文的问题，但不保证消息完整性
 
-验证码模式：
+Message Authentication Code：MAC 验证码模式：
     MAC: Message Authentication Code, 消息认证码, 用于保证消息的完整性，
     GMAC: Galois message authentication code mode, 伽罗瓦消息验证码
     GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式    
     AEAD: Authenticated Encryption with Associated Data 
+    Poly1305: 
     
 Padding Mode: 填充模式
     NoPadding

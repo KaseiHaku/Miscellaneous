@@ -5,8 +5,10 @@ POSIX (Portable Operating System Interface): 可移植操作系统接口标准
 PCRE 标准
     grep -P 使用的 RE 标准
     以下是 PCRE 标准 
-    
-    
+
+/** 特殊名词 */
+Backreference       反向引用
+Backtrack           回溯，指正则匹配失败时，回退到上次可能匹配处，继续另一个路径的匹配
     
     
 
@@ -187,7 +189,7 @@ $,\Z                        $,\_$                           $                   
 *?                          \{-}                                                                                # 0 or more, non-greedy
 +?                                                                                                              # 1 or more, non-greedy
 {n,m}? {n,}?                \{-n,m} \{-n,}                                                                      # 指定数字，非贪婪模式
-?+                                                                                                              # 0 or 1, don't give back on backtrack
+?+                                                                                                              # 0 or 1, don't give back on backtrack, 回溯, 
 *+                                                                                                              # 0 or more, don't give back on backtrack
 ++                                                                                                              # 1 or more, don't give back on backtrack
 {n,m}+ {n,}+                                                                                                    # Specific number, don't give back on backtrack

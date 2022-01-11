@@ -5,6 +5,75 @@ POSIX (Portable Operating System Interface): 可移植操作系统接口标准
 PCRE 标准
     grep -P 使用的 RE 标准
     以下是 PCRE 标准 
+    
+    
+    
+    
+/******************************* POSIX(BRE, ERE) & PCRE Diff *******************************/
+PCRE                        Vim                             BRE                         ERE     
+/*************** Basics ***************/
+[abc]                       [abc]                           [abc]                       [abc]                   # 字符集
+[^abc]                      [^abc]                          [^abc]                      [^abc]                  # 否定字符集
+yes                         yes                             no, ] escpe                 no, ] escpe             # \ 在 [abc] 中是否是特殊字符            
+[a-z]                       [a-z]                           [a-z]                       [a-z]                   # 范围
+(x|y)                       (x\|y),(x\&y)                   (x\|y)                      (x|y)                   # "或" 操作
+\033,\xFF,\N{}              \%d123,\%x2A,\%u123                                                                 # 特殊字符
+
+/*************** Character classes ***************/
+.                           .                               .                           .                       # 匹配任何字符，除了 \n
+                            \_.                                                                                 # 匹配任何字符，包括 \n
+\w,[[:word:]]               \w                              \w                          \w                      # 匹配 单词 字符(char + num + "+" + "_")
+[[:upper:]],[[:lower:]]     \u[[:upper:]],\l[[:lower:]]     [[:upper:]],[[:lower:]]     [[:upper:]],[[:lower:]] # 匹配大小写
+\W                          \W                                                                                  # 匹配 非单词 字符
+                            \s,[[:space:]]                  \s,[[:space:]]              \s,[[:space:]]          # 匹配 空白字符，除了 \n
+\s,[[:space:]]              \_s                                                                                 # 匹配 空白字符，包括 \n
+\d,[[:digit:]]              \d,[[:digit:]]                  [[:digit:]]                 [[:digit:]]             # 匹配 数字
+\D                          \D,[^[:digit:]]                 [^[:digit:]]                [^[:digit:]]            # 匹配 非数字
+[[:xdigit:]]                \x,[[:xdigit:]]                 [[:xdigit:]]                [[:xdigit:]]            # 匹配 十六进制数字
+                            \o                                                                                  # 匹配 八进制数字
+[[:punct:]]                 [[:punct:]]                     [[:punct:]]                 [[:punct:]]             # 匹配 符号字符，除了 单词字符
+[[:alpha:]]                 \a,[[:alpha:]]                  [[:alpha:]]                 [[:alpha:]]             # 匹配 所有 字母字符
+                            \A,[^[:alpha:]]                 [^[:alpha:]]                [^[:alpha:]]            # 匹配 所有 非字母字符
+[[:alnum:]]                 [[:alnum:]]                     [[:alnum:]]                 [[:alnum:]]             # 匹配 所有 字母数字
+[[:ascii:]]                                                                                                     # 匹配所有 ASCII 字符
+                            [[=e=]]                         [[=e=]]                     [[=e=]]                 # 匹配所有 e 及 带音标的 e， 例如：(e = é = è)
+
+/*************** Zero-width assertions ***************/
+\b                          \<,\>                           \b                          \b                      # 匹配单词边界
+\B                                                          \B                          \B                      # 匹配单词边界以外的 任何位置
+^,\A                        ^,\_^                           ^                           ^                       # 行 或 字符串 的 开始的位置
+$,\Z                        $,\_$                           $                           $                       # 行 或 字符串 的 结束的位置
+
+/*************** Captures and groups ***************/
+(...),(?<name>...)          \(...\)                         \(...\)                     (...)                   # 捕获组
+(?:...)                     \%(...\)                                                                            # 非捕获组
+\1,\g1,\g{-1}               \1                              \1                          \1                      # 反向引用 之前的 捕获组
+\g{name},\k<name>                                                                                               # 反向引用 之前的 命名捕获组
+
+/*************** Look-around ***************/
+(?=...)                     \(...\)\@=                                                                          # 正向预搜索，肯定
+(?!...)                     \(...\)\@!                                                                          # 正向预搜索，否定
+(?<=...)                    \(...\)\@<=                                                                         # 反向预搜索，肯定
+(?<!...)                    \(...\)\@<!                                                                         # 反向预搜索，否定
+
+/*************** Multiplicity ***************/
+?                           \?                              \?                          ?                       # 0 or 1
+*                           *                               *                           *                       # 0 or more
++                           \+                              \+                          +                       # 1 or more
+{n} {n,m} {n,}              \{n} \{n,m} \{n,}               \{n\} \{n,m\} \{n,\}        {n} {n,m} {n,}          # 指定数字
+??                                                                                                              # 0 or 1, non-greedy 非贪婪模式
+*?                          \{-}                                                                                # 0 or more, non-greedy
++?                                                                                                              # 1 or more, non-greedy
+{n,m}? {n,}?                \{-n,m} \{-n,}                                                                      # 指定数字，非贪婪模式
+?+                                                                                                              # 0 or 1, don't give back on backtrack
+*+                                                                                                              # 0 or more, don't give back on backtrack
+++                                                                                                              # 1 or more, don't give back on backtrack
+{n,m}+ {n,}+                                                                                                    # Specific number, don't give back on backtrack
+
+/*************** Other ***************/
+(?>...)                     \(...\)\@>                                                                          # Independent non-backtracking pattern 
+(?i),(?-i)                  \c,\C                                                                               # Make case-sensitive/insensitive
+
 
 /** TODO Regular Expression Special Characters */
 ^$

@@ -79,10 +79,13 @@ ymlstr9: >
  strRow1
  strRow2
  
-# YAML 引用
+# YAML 引用: 引用前面已有配置的值
+ymlref3: ${a.b.c:defaultValue}    # : 后面的表示如果前面引用取不到，那么使用后面的默认值，默认值也可以使用 ${} 取引用
+
+# YAML Anchors: 引用前面已有的配置，@trap 不仅仅是值，而是整个对象，包括子属性
 ymlref1: &ref refValue
 ymlref2: *ref             # 相当于 ymlref2: refValue
-ymlref3: ${a.b.c:defaultValue}    # : 后面的表示如果前面引用取不到，那么使用后面的默认值，默认值也可以使用 ${} 取引用
+
 
 # 文档块：表示相当于另一个文件
 ---

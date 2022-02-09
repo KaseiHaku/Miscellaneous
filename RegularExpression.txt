@@ -1,3 +1,5 @@
+@trap 正则表达式，是从 字符串 第一个字符开始，逐步匹配的，因此不能从 字符串尾 开始匹配
+
 /** TODO Regular Expression History */
 POSIX (Portable Operating System Interface): 可移植操作系统接口标准
     BRE (Basic Regular Expressions):  grep 和 vim 中默认的正则表达式标准        
@@ -9,8 +11,6 @@ PCRE 标准
 /** 特殊名词 */
 Backreference       反向引用
 Backtrack           回溯，指正则匹配失败时，回退到上次可能匹配处，继续另一个路径的匹配
-    
-    
 
 
 /** TODO Regular Expression Special Characters */

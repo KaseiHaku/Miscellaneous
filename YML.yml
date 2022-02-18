@@ -63,12 +63,18 @@ fff                   # 前面没空格，最终也是一个空格
 ymlstr4: 's\ntr'       # 注意 \n 不转义，原样输出
 
 # 文字块中 所有内容 原样输出
-# |, |+ 相同；这写符号要求 字符串必须对其
 # "strRow1\nstrRow2\n"  使用文字块保留每行之间的 \n
 ymlstr6: | 
  strRow1
  strRow2
- 
+
+# "strRow1\nstrRow2\n\n\n"  使用文字块保留每行之间的 \n，尾随空行也加入到文字块中，直到下一个字段开始
+ymlstr6: |+
+ strRow1
+ strRow2
+
+
+
 # "strRow1\nstrRow2"  删除文字块末尾的 \n
 ymlstr8: |-
  strRow1

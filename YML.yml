@@ -73,7 +73,8 @@ ymlstr7: |+
 ymlstr8: |-
  strRow1
  strRow2
- 
+
+# 同 |，这里也有 >, >+, >-
 # "strRow1 strRow2\n"  使用文字块删除每行之间的 \n，但是每行之间会有空格
 ymlstr9: >
  strRow1

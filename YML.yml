@@ -38,7 +38,12 @@ peoples:
 
 
 # YAML 各种字符串格式演示
-ymlstr1: str
+# "str\nStr2"
+ymlstr1: str\nStr2
+
+# "strRow1 strRow2"   
+ymlstr5: strRow1
+ strRow2          # 该行前面至少有一个空格 才行，否则格式错误
 
 # '' 中所有转义字符都不生效，除了 ' 自身
 # "str b'ob\n gg"
@@ -46,36 +51,31 @@ ymlstr2: 'str b''ob\n gg'
 
 
 # "" 中转义字符会生效，但是行末 \ 代表字符串的连续，前提是该 \ 不被之前的 \ 转义
-# "aaabbb\ ccc\eee\n"
-ymlstr3: "aaa\       # 行末的 \ 代表字符串的连接  # 注意此处单空格缩进
+# "aaabbb\ ccc\eee ddd fff "
+ymlstr3: "aaa\       # 行末的 \ 代表字符串的连接 @trap 这里 \ 后面不能有任何字符，包括空格
  bbb\\               # 行末的 \ 被 \\ 转义成普通的 \ 而不具有特殊意义了
- ccc\\eee              # 子符串中间的 \ 代表转义字符
+      ccc\\eee        # 子符串中间的 \ 代表转义字符
+   ddd                # 不管前缀有多少个空格，最终都是一个空格
+fff                   # 前面没空格，最终也是一个空格
  "                    
 
 # "s\ntr"
 ymlstr4: 's\ntr'       # 注意 \n 不转义，原样输出
 
-# "strRow1 strRow2"   
-ymlstr5: strRow1
- strRow2            # 注意此处单空格缩进
-
-# "\nstrRow1\nstrRow2\n"  使用文字块保留每行之间的 \n
-ymlstr6: |
+   
+# |, |+ 相同；这写符号要求 字符串必须对其
+# "strRow1\nstrRow2\n"  使用文字块保留每行之间的 \n
+ymlstr6: | 
  strRow1
  strRow2
  
-# "strRow1\nstrRow2\n"  保留文字块末尾的 \n
-ymlstr7: |+
-  strRow1
-  strRow2
-  
 # "strRow1\nstrRow2"  删除文字块末尾的 \n
 ymlstr8: |-
  strRow1
  strRow2
 
-# 同 |，这里也有 >, >+, >-
-# "strRow1 strRow2\n"  使用文字块删除每行之间的 \n，但是每行之间会有空格
+# 这里也有 >, >+, >-; 效果同 |, |+, |-
+# "strRow1 strRow2\n"  使用文字块删除每行之间的 \n，但是每行之间会有一个空格
 ymlstr9: >
  strRow1
  strRow2

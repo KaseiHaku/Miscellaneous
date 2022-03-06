@@ -50,9 +50,10 @@ E 类： 240.0.0.0 ~ 255.255.255.255            二进制组成： 11110    [27 
 
 
 
-AddressBlock        Name                                        Source      Destination         Forwardable     GloballyReachable       Reserved-by-Protocol    
-::1/128             Loopback Address                            false       false               false           false                   true                    
-::/128              Unspecified Address                         true        false               false           false                   true                    
+AddressBlock        Name                                        Source      Destination         Forwardable     GloballyReachable       Reserved-by-Protocol 
+::/0                Default route                               true        false               false           false                   true
+::/128              Unspecified Address                         true        false               false           false                   true      
+::1/128             Loopback Address                            false       false               false           false                   true    
 ::ffff:0:0/96       IPv4-mapped Address                         false       false               false           false                   true                    
 64:ff9b::/96        IPv4-IPv6 Translat                          true        true                true            true                    false                   
 64:ff9b:1::/48      IPv4-IPv6 Translat                          true        true                true            false                   false                   
@@ -71,7 +72,7 @@ AddressBlock        Name                                        Source      Dest
 2620:4f:8000::/48   Direct Delegation AS112 Service             True        True                True            True                    False
 fc00::/7            Unique-Local                                True        True                True            False [4]               False
 fe80::/10           Link-Local Unicast                          True        True                False           False                   True
-
+ff00::/8            Multicast address
 
 
 IPv6 特殊地址

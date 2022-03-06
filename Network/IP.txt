@@ -50,6 +50,30 @@ E 类： 240.0.0.0 ~ 255.255.255.255            二进制组成： 11110    [27 
 
 
 
+AddressBlock        Name                                        Source      Destination         Forwardable     GloballyReachable       Reserved-by-Protocol    
+::1/128             Loopback Address                            false       false               false           false                   true                    
+::/128              Unspecified Address                         true        false               false           false                   true                    
+::ffff:0:0/96       IPv4-mapped Address                         false       false               false           false                   true                    
+64:ff9b::/96        IPv4-IPv6 Translat                          true        true                true            true                    false                   
+64:ff9b:1::/48      IPv4-IPv6 Translat                          true        true                true            false                   false                   
+100::/64            Discard-Only Address Block                  true        true                true            false                   false        
+2001::/23           IETF Protocol Assignments                   False       False               False           False                   False
+2001::/32           TEREDO                                      True        True                True            N/A [2]                 False
+2001:1::1/128       Port Control Protocol Anycast               True        True                True            True                    False
+2001:1::2/128       Traversal Using Relays around NAT Anycast   True        True                True            True                    False
+2001:2::/48         Benchmarking                                True        True                True            False                   False
+2001:3::/32         AMT                                         True        True                True            True                    False
+2001:4:112::/48     AS112-v6                                    True        True                True            True                    False
+2001:10::/28        Deprecated (previously ORCHID)                               
+2001:20::/28        ORCHIDv2                                    True        True                True            True                    False
+2001:db8::/32       Documentation                               False       False               False           False                   False
+2002::/16 [3]       6to4                                        True        True                True            N/A [3]                 False
+2620:4f:8000::/48   Direct Delegation AS112 Service             True        True                True            True                    False
+fc00::/7            Unique-Local                                True        True                True            False [4]               False
+fe80::/10           Link-Local Unicast                          True        True                False           False                   True
+
+
+
 IPv6 特殊地址
     ::/0        # 默认路由
     ::/128      # 表示 ip 地址未定义

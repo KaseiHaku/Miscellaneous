@@ -6,7 +6,8 @@ spring:
     description: ${spring.application.name} is my spring boot study project
   profiles:
     active: home
-
+  'key1': val1    # 包含特殊字符的 key
+  "key2": val2    # 包含特殊字符的 key
 
 # Array List Set
 ymlary1: [1, 2, 3]

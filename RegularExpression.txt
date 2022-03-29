@@ -149,6 +149,7 @@ yes                         yes                             no, ] escape        
 \w,[[:word:]]               \w                              \w                          \w                      # 匹配 单词 字符(char + num + "+" + "_")
 [[:upper:]],[[:lower:]]     \u[[:upper:]],\l[[:lower:]]     [[:upper:]],[[:lower:]]     [[:upper:]],[[:lower:]] # 匹配大小写
 \W                          \W                                                                                  # 匹配 非单词 字符
+                                                                                        [:blank:]               # 匹配空白字符（空格和制表符）
                             \s,[[:space:]]                  \s,[[:space:]]              \s,[[:space:]]          # 匹配 空白字符，除了 \n
 \s,[[:space:]]              \_s                                                                                 # 匹配 空白字符，包括 \n
 \d,[[:digit:]]              \d,[[:digit:]]                  [[:digit:]]                 [[:digit:]]             # 匹配 数字
@@ -159,7 +160,10 @@ yes                         yes                             no, ] escape        
 [[:alpha:]]                 \a,[[:alpha:]]                  [[:alpha:]]                 [[:alpha:]]             # 匹配 所有 字母字符
                             \A,[^[:alpha:]]                 [^[:alpha:]]                [^[:alpha:]]            # 匹配 所有 非字母字符
 [[:alnum:]]                 [[:alnum:]]                     [[:alnum:]]                 [[:alnum:]]             # 匹配 所有 字母数字
-[[:ascii:]]                                                                                                     # 匹配所有 ASCII 字符
+[[:ascii:]]                                                                                                     # 匹配 所有 ASCII 字符
+                                                                                        [:cntrl:]               # 匹配 不可打印的控制字符（退格、删除、警铃...）
+                                                                                        [:graph:]               # 匹配 可打印的非空白字符
+                                                                                        [:print:]               # 匹配 可打印字符
                             [[=e=]]                         [[=e=]]                     [[=e=]]                 # 匹配所有 e 及 带音标的 e， 例如：(e = é = è)
 
 /*************** Zero-width assertions ***************/

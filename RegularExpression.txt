@@ -138,7 +138,7 @@ PCRE                        Vim                             BRE                 
 /*************** Basics ***************/
 [abc]                       [abc]                           [abc]                       [abc]                   # 字符集
 [^abc]                      [^abc]                          [^abc]                      [^abc]                  # 否定字符集
-yes                         yes                             no, ] escpe                 no, ] escpe             # \ 在 [abc] 中是否是特殊字符            
+yes                         yes                             no, ] escape                no, ] escape             # \ 在 [abc] 中是否是特殊字符            
 [a-z]                       [a-z]                           [a-z]                       [a-z]                   # 范围
 (x|y)                       (x\|y),(x\&y)                   (x\|y)                      (x|y)                   # "或" 操作
 \033,\xFF,\N{}              \%d123,\%x2A,\%u123                                                                 # 特殊字符

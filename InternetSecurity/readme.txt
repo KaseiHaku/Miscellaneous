@@ -80,6 +80,35 @@ Prefect Forward Secrecy:
     完美前向保密性：指长期使用的 主密钥 泄漏不会导致过去的 会话密钥 泄漏 
 
 
+
+Public Key Infrastructure(PKI) :
+    签名过程：
+        申请人提交 data 到 ca
+        ca 对 data 进行 hash 计算，得到 hashcode
+        ca 使用 ca.crt.pem 对应的 pvt.key.pem，对 hashcode 进行加密，得到 ds(Digital Signature)
+        ca 将 data + ds 合并成一个文件，这个文件就是 数字证书(DC, Digital Certificate)
+    验签过程:
+        使用 ca.crt.pem 中的 pub.key.pem 对 数字证书 中的 ds 解密，得到 hashcode1
+        使用 相同的 hash 算法 对 data 进行 hash 计算，得到 hashcode2
+        对比 hashcode1 和 hashcode2, 如果不一致，则校验失败
+    证书链验签过程:
+        user 获取 end-user.crt，并提取 end-user.crt 证书的颁发者 intermediate-1
+        user 获取 intermediate-1.crt，并提取 intermediate-1.crt 证书的颁发者 intermediate-2
+        ...
+        user 获取 intermediate-n-1.crt，并提取 intermediate-n-1.crt 证书的颁发者 intermediate-n
+        user 获取 intermediate-n.crt，并提取 intermediate-n.crt 证书的颁发者 root
+        
+        user 获取 root.crt ( root.crt 是预置在 browser 中的，而且是 自签证书 )
+        
+        使用 root.crt 中的 pub.key 对 intermediate-n.crt 中的 ds 解密，并对比 hashcode 完成验签，如果通过，则继续
+        使用 intermediate-n.crt 中的 pub.key 对 intermediate-n-1.crt 中的 ds 解密，并对比 hashcode 完成验签，如果通过，则继续
+        使用 intermediate-n-1.crt 中的 pub.key 对 intermediate-n-2.crt 中的 ds 解密，并对比 hashcode 完成验签，如果通过，则继续
+        ...
+        使用 intermediate-1.crt 中的 pub.key 对 end-user.crt 中的 ds 解密，并对比 hashcode 完成验签，如果通过，则继续
+        完成验证过程
+
+
+
 File Format Specification: 规定文件中，各个字符的排列顺序，需要存在的 key-value，各个 k-v 的排列组合方式
     X.509:  
         一个文件格式的规范，TLS 证书的格式就是符合这个规范的

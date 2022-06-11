@@ -151,4 +151,14 @@ File Format Specification: 规定文件中，各个字符的排列顺序，需�
     .pfx .pkcs12, .p12                      Public-Key Cryptography Standards: 公钥密码学标准： 包含公钥和私钥的二进制格式证书，一般会有一个“提取密码”，来提取内容
                                             主要用于 windows 平台，浏览器可以使用，也是 包含证书/公钥 和 私钥，获取私钥需要密码才可以
 
+SSL/TLS 证书:
+    按 安全级别 分: 
+        DV(Domain Validation) SSL:  只验证网站域名所有权的 简易型 SSL 证书
+        OV(Organization Validation) SSL: 额外需要验证网站所有单位的真实身份的  标准型 SSL 证书
+        EV(Extended Validation) SSL: 遵循全球统一的严格身份验证标准颁发 的 SSL证书
+    按 支持的域名数量 分:
+        单域名 证书:
+        多域名 证书: 可以支持多个完全不同的顶级域名使用
+        通配符 证书: 可以支持同一主域名下同一级的所有子域名
+        多域名 通配符 证书:
 

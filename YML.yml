@@ -84,8 +84,13 @@ ymlstr9: >
 # YAML Anchors: 引用前面已有的配置，@trap 不仅仅是值，而是整个对象，包括子属性
 ymlref1: &ref refValue
 ymlref2: *ref             # 相当于 ymlref2: refValue
-ymlref3:
-  <<: *ref      # 继承
+
+ymlref3: &ref2
+  aa: aa
+  bb: bb
+ymlref4:
+  <<: *ref2      # 继承  ymlref3 的配置，所以 ymlref4 同时有: aa,bb,cc
+  cc: cc
 
 
 # 文档块：表示相当于另一个文件

@@ -1,0 +1,14 @@
+Blocking IO:
+    建立一个 Socket 一直等待，直到有数据返回
+    
+Non-Blocking IO:
+    建立一个 Socket，定时轮询是否有数据返回
+    
+IO multiplexing:
+    建立多个 Channel, 多个 Channel 对应一个 Socket，按策略轮询 Channel
+
+Signal driven IO：
+    有数据返回时，发送信号，触发 中断/回调
+
+Asynchronous IO：
+    数据接收完毕时(注意以上 Model 都是由数据返回时)，再回调

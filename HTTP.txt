@@ -80,9 +80,20 @@ Request Header:
     # 对应 Server Header Content-Language;
     Accept-Language: en-US;q=1.0, zh-CN;q=0.5, *;q=0.1
     
+    
+    
 Response Header:
     # 指定 Server 当前返回内容的 MIME-Type 以及 Charset Boundary 等参数
     Content-Type: text/html; charset=utf-8; boundary=----kaseihaku
+    
+    # 返回内容长度相关头
+    # Server 返回数据流程:
+    #   1. 将 response body 写入到 buffer 中，
+    #   2. 如果 buffer 够大，能写入所有 body，那么使用 Content-Length 头，
+    #      否则使用 Transfer-Encoding 头
+    #   3. 因为数据在 buffer 中，所以 os.close(); 之前，必须执行 os.flush(); 将 buffer 中的内容写出
+    Content-Length:                     # 直接指明返回内容的长度
+    Transfer-Encoding: chunked          # 表明返回内容不全，https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Transfer-Encoding
     
     # 
     Content-Disposition: 

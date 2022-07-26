@@ -1,7 +1,9 @@
 @trap 正则表达式，是从 字符串 第一个字符开始，逐步匹配的，因此不能从 字符串尾 开始匹配
+@doc https://en.wikipedia.org/wiki/Regular_expression#Character_classes
 
 /** TODO Regular Expression History */
 POSIX (Portable Operating System Interface): 可移植操作系统接口标准
+    @doc https://en.wikibooks.org/wiki/Regular_Expressions/POSIX-Extended_Regular_Expressions
     BRE (Basic Regular Expressions):  grep 和 vim 中默认的正则表达式标准        
     ERE (Extended Regular Expressions): grep -E 使用的 RE 标准
 PCRE 标准
@@ -14,8 +16,8 @@ Backtrack           回溯，指正则匹配失败时，回退到上次可能匹
 
 
 /******************************* POSIX BRE *******************************/
-元字符: [ ] . ^ $
-字符类：[:upper:] [:lower:]
+元字符: ? + { | ( )                    需要使用  \?, \+, \{, \|, \(, \) 来表示
+字符类：[:upper:] [:lower:] [:alpha:] [:alnum:] [:digit:] [:xdigit:] [:punct:] [:blank:] [:space:] [:cntrl:] [:graph:] [:print:]
 零宽断言: 
 捕获组：
 预搜索: 
@@ -34,6 +36,7 @@ Backtrack           回溯，指正则匹配失败时，回退到上次可能匹
 /******************************* PCRE *******************************/
 元字符: [ ] . ^ $ { } ( ) | ? + * \
 字符类：[:word:] [:upper:] [:lower:] [:space:] [:digit:] [:xdigit:] [:punct:] [:alpha:] [:alnum:] [:ascii:]
+       \b \B \w \W \s \S \d \D
 零宽断言: 
 捕获组：
 预搜索: 
@@ -154,9 +157,9 @@ $       // 匹配字符串结束位置，多行模式下可以匹配行的结尾
 /******************************* POSIX(BRE, ERE) & PCRE Diff *******************************/
 PCRE                        Vim                             BRE                         ERE     
 /*************** Basics ***************/
-[abc]                       [abc]                           [abc]                       [abc]                   # 字符集
-[^abc]                      [^abc]                          [^abc]                      [^abc]                  # 否定字符集
-yes                         yes                             no, ] escape                no, ] escape             # \ 在 [abc] 中是否是特殊字符            
+[abc]                       [abc]                           [abc],[-],[]]               [abc],[-],[]]           # 字符集
+[^abc]                      [^abc]                          [^abc],[^-],[^]]            [^abc],[^-],[^]]        # 否定字符集
+yes                         yes                             no, ] escape                no, ] escape            # \ 在 [abc] 中是否是特殊字符            
 [a-z]                       [a-z]                           [a-z]                       [a-z]                   # 范围
 (x|y)                       (x\|y),(x\&y)                   (x\|y)                      (x|y)                   # "或" 操作
 \033,\xFF,\N{}              \%d123,\%x2A,\%u123                                                                 # 特殊字符

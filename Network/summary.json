@@ -70,7 +70,7 @@
                 }
             },
             "MAC（Media Access Control 物理链路层）":{
-                "MAC 寻址":，
+                "MAC 寻址": ,
                 "相关协议":{
                     "ARP(Address Resolation Protocol)地址解析协议": "将 IP 转为 MAC 地址",
                     "RARP": ""

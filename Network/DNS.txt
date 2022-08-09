@@ -12,7 +12,7 @@ Example: A      haku.kasei      1.2.3.4
 AAAA 记录：把用户输入的域名解析到指定的 IPv6 上
 Example: AAAA      haku.kasei      1234::1
 
-CNAME 记录：给申请的域名起个别名，指定到指定的 A 记录上
+CNAME 记录：给申请的域名起个别名，指向另一个域名，如果另一个域名也是 CNAME，那么递归解析，直到 A 记录
 Example: CNAME      miku.kasei     haku.kasei
 Example: CNAME      luka.kasei     haku.kasei
 

@@ -31,6 +31,12 @@ peoples:
   - {name: wangwu,age: 18}
 
 
+# Tag
+tag: !!int 234      # !!int 表示后续值的类型是 int
+                    # @trap  !!xxx = 表示 xxx 是内建 tag; !yyy = 表示 yyy 是自定义 tag
+
+
+
 # YAML 各种字符串格式演示
 # "str\nStr2"
 ymlstr1: str\nStr2

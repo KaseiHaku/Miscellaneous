@@ -1,6 +1,16 @@
-# spring 中所有配置文件，命令行参数等信息，都可以通过 Environment 类来获取，或者通过 @ConfigurationProperties 注解来获取
-'key1': val1    # 包含特殊字符的 key
-"key2": val2    # 包含特殊字符的 key
+################################ Char ################################
+# -     dash
+# :     colon
+# #     octothorpe, hash, sharp, pound, number sign
+# !     exclamation point 
+
+
+################################ Collections: 藏品 ################################
+# Null
+ymlnull: ~          # 相当于 json 中 {"ymlnull": null}
+
+# Date
+ymldate: 2019/01/01
 
 # Array List Set
 ymlary1: [1, 2, 3]
@@ -9,11 +19,6 @@ ymlary2:
   - 2
   - 3
 
-# Null
-ymlnull: ~          # 相当于 json 中 {"ymlnull": null}
-
-# Date
-ymldate: 2019/01/01
 
 # Object Map
 ymlobj1: {name:zhangsan,age: 20}
@@ -31,12 +36,46 @@ peoples:
   - {name: wangwu,age: 18}
 
 
-# Tag
-tag: !!int 234      # !!int 表示后续值的类型是 int
-                    # @trap  !!xxx = 表示 xxx 是内建 tag; !yyy = 表示 yyy 是自定义 tag
+################################ Structures: 结构 ################################
+---       # 表示一个新的 yaml document 的开始
+...       # 表示当前 yaml document 结束，且不开始一个新的 yaml document
+
+'key1': val1    # 包含特殊字符的 key
+"key2": val2    # 包含特殊字符的 key
+
+# 当 key 为一个 array 时
+? [ element1, element2 ]: val
+
+? - element1
+  - element2
+: val
+
+# 当 key 为一个 map 时
+? {key1: val1, key2, val2}: val
+
+? key1: val1
+  key2: val2
+: val
+
+
+# YAML Anchors: 引用前面已有的配置，@trap 不仅仅是值，而是整个对象，包括子属性
+ymlref1: &ref refValue
+ymlref2: *ref             # 相当于 ymlref2: refValue
+
+ymlref3: &ref2
+  aa: aa
+  bb: bb
+ymlref4:
+  <<: *ref2      # 继承  ymlref3 的配置，所以 ymlref4 同时有: aa,bb,cc
+  cc: cc
+  
 
 
 
+
+
+
+################################ Scalars: 纯量，字面量 ################################
 # YAML 各种字符串格式演示
 # "str\nStr2"
 ymlstr1: str\nStr2
@@ -87,17 +126,47 @@ ymlstr9: >
  strRow2
 
 
-# YAML Anchors: 引用前面已有的配置，@trap 不仅仅是值，而是整个对象，包括子属性
-ymlref1: &ref refValue
-ymlref2: *ref             # 相当于 ymlref2: refValue
-
-ymlref3: &ref2
-  aa: aa
-  bb: bb
-ymlref4:
-  <<: *ref2      # 继承  ymlref3 的配置，所以 ymlref4 同时有: aa,bb,cc
-  cc: cc
 
 
-# 文档块：表示相当于另一个文件
----
+################################ Tags: 标签 ################################
+# Tag 是什么？ yaml 中用于标明当前 node 是哪种数据类型时，使用的标签
+# 在 yaml 中，不带 tag 的 node 的 type 是根据 application 决定的
+# Global Tags:
+#   URI = schema:...  = tag:...
+# Local Tags:
+#   !local_tags
+
+%YAML 1.2.2   # 表明当前 yaml 文件编写时，使用的是 1.2.2 规范
+
+# node 命名空间管理，类似 xml 中的命名空间
+# %TAG                  ns-tag-directive，指定当前 yaml 文档中使用的 命名空间   
+# !yaml!                c-tag-handle，定义一个名为 !yaml! 的命名空间
+# tag:yaml.org,2002     ns-tag-prefix，命名空间前缀
+%TAG !yaml! tag:yaml.org,2002:      # URI = schema:  = tag:
+
+
+# Failsafe Schema: 即保证可以正常工作的 yaml 模式
+GenericMapping: !!map     # !!map 表示
+  key1: val1
+  key2: val2
+
+GenericSequence: !!seq
+  - aaa
+  - bbb
+
+GenericString: !!str |-
+  String: just a theory.
+
+# JSON Schema: 即保证可以正常工作的 yaml 模式
+# Tag
+tag: !!int 234      # !!int 表示后续值的类型是 int
+                    # @trap  !!xxx = 表示 xxx 是内建 tag; !yyy = 表示 yyy 是自定义 tag
+
+
+
+
+
+
+
+
+

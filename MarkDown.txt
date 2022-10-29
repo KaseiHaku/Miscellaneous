@@ -28,9 +28,14 @@
 
 
 链接:
-[简书](http://jianshu.com "titleContent")
-[Google][1]
-[1]: www.google.com  titleContent
+[简书](http://jianshu.com "鼠标悬停显示内容")
+<https://markdown.com.cn>
+<fake@example.com>
+[引用类型链接][1]
+
+[1]: <www.google.com>  (titleContent)
+[2]: www.google.com  'titleContent'
+[3]: <www.google.com>  "titleContent"
 
 
 

@@ -66,7 +66,8 @@ ymlref3: &ref2
   aa: aa
   bb: bb
 ymlref4:
-  <<: *ref2      # 继承  ymlref3 的配置，所以 ymlref4 同时有: aa,bb,cc
+  <<: *ref2      # 继承  ymlref3 的配置，所以 ymlref4 同时有: aa,bb,cc;  @trap  该标记不能展开数组元素，如果是数组必须是整个引入
+  << : [ *CENTER, *BIG ]    # 同时继承 两个
   cc: cc
   
 

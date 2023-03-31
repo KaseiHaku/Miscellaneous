@@ -146,7 +146,7 @@ ymlstr9: >
 
 
 # Failsafe Schema: 即保证可以正常工作的 yaml 模式
-GenericMapping: !!map     # !!map 表示
+GenericMapping: !!map     # !!map 表示 强制类型转换，强转为 map
   key1: val1
   key2: val2
 

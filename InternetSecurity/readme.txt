@@ -1,5 +1,11 @@
 CSPRNG = Cryptographically Secure Pseudo-Random Number Generator = 密码学上安全的伪随机数生成器
-
+IV: Initialization Vector，初始化向量
+    是一种在加密算法中使用的随机数值，用于增加加密过程的安全性和可靠性。在块密码加密算法中，IV 是一个固定长度的数据块，通常与密钥一起用于加密和解密数据
+    在使用 IV 时，需要注意以下几点：
+        IV 应该是随机的，并且每次加密操作都应该使用不同的 IV。
+        IV 的长度应该与加密算法的块长度相同。
+        IV 应该是保密的，并且只有授权的用户才能访问。
+        在使用 IV 时，需要根据具体的加密算法和模式来选择合适的 IV 生成方式。
 
 Message Digest: 消息摘要
     Feature：

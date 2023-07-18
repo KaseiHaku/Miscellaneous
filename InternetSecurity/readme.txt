@@ -1,3 +1,6 @@
+CSPRNG = Cryptographically Secure Pseudo-Random Number Generator = 密码学上安全的伪随机数生成器
+
+
 Message Digest: 消息摘要
     Feature：
         Irreversible：不可逆加密算法，根据密文无法重新得到原文的算法，主要用于保证数据不被篡改
@@ -27,7 +30,7 @@ Encrypt：加密
         
         Algorithm：
             RSA: 三个创始人的姓氏首字母 @Deprecated
-            ECIES: 基于 ECC(Elliptic Curves Cryptography, 椭圆曲线密码编码学) 的加密算法
+            ECIES(Elliptic Curve Integrated Encryption Scheme): 基于 ECC(Elliptic Curves Cryptography, 椭圆曲线密码编码学) 的加密算法
 
 Encrypt Mode: 加密模式
     ECB: Electronic Mode，电子密码本模式;
@@ -57,13 +60,21 @@ Encrypt Mode: 加密模式
 Message Authentication Code：MAC 验证码模式：
     MAC: Message Authentication Code, 消息认证码, 用于保证消息的完整性，
     GMAC: Galois message authentication code mode, 伽罗瓦消息验证码
-    GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式    
-    AEAD: Authenticated Encryption with Associated Data 
+
+    AAD: Additional Associated Data，附加关联数据
+
+    AEAD: Authenticated Encryption with Associated Data，带关联数据的经过认证的加密
+        GCM: Galois/Counter Mode, 伽罗瓦消息验证码 计数器 模式  
+        CCM: Counter/CBC Mode
+    
+
+        
     Poly1305: 
     
 Padding Mode: 填充模式
     NoPadding
-    PKCS5Padding
+    OAEPPadding:
+    PKCS5Padding: RSA 使用
     PKCS7Padding
     
 Digital Signature Algorithm: DSA

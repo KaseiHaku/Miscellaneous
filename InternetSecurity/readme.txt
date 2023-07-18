@@ -35,6 +35,7 @@ Encrypt Mode: 加密模式
          也就是说，ECB不能提供对密文的完整性校验。因此，在任何情况下都不推荐使用ECB模式。
          
     CBC: Cipher Block Chaining, 密码分组链接模式;
+    PCBC: Propagating Cipher Block Chaining
          是一种循环模式，前一个分组的密文和当前分组的明文异或操作后再加密，这样做的目的是增强破解难度。
          
     CFB: Cipher FeedBack, 密码反馈模式; 
@@ -45,6 +46,12 @@ Encrypt Mode: 加密模式
     
     CTR：Counter Mode，计数器模式;
          解决相同明文会得到相同密文的问题，但不保证消息完整性
+
+    KW: Key Wrap，
+    KWP：Key Wrap With Padding
+        对称加密密钥的加密模式，用于保护对称密钥的机密性和完整性
+
+    GCM: Galois/Counter Mode
 
 Message Authentication Code：MAC 验证码模式：
     MAC: Message Authentication Code, 消息认证码, 用于保证消息的完整性，

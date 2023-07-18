@@ -36,6 +36,7 @@ Encrypt Mode: 加密模式
          
     CBC: Cipher Block Chaining, 密码分组链接模式;
     PCBC: Propagating Cipher Block Chaining
+    CCM: Counter/CBC Mode
          是一种循环模式，前一个分组的密文和当前分组的明文异或操作后再加密，这样做的目的是增强破解难度。
          
     CFB: Cipher FeedBack, 密码反馈模式; 

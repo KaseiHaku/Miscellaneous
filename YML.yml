@@ -163,7 +163,21 @@ GenericString: !!str |-
 tag: !!int 234      # !!int 表示后续值的类型是 int
                     # @trap  !!xxx = 表示 xxx 是内建 tag; !yyy = 表示 yyy 是自定义 tag
 
+person:
+  !com.kh.dto.Person                # 表示转换成一个 Person 实例
+  name: a
+  age: 2
 
+personAry:
+  - !com.kh.dto.person.Student      # 表示转换成一个 Student 实例
+    name: a
+    age: 18
+    grade: A
+  - !com.kh.dto.person.Teacher      # 表示转换成一个 Teacher 实例
+    name: a
+    age: 18
+    subject: Math
+    
 
 
 

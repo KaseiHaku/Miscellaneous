@@ -31,6 +31,10 @@ Response 返回格式：
     回车符 换行符
     响应正文
 
+Response Status:
+    @doc https://www.rfc-editor.org/rfc/rfc9110#name-status-codes
+
+
 Web 乱码问题:
     URL 地址：
         根据 http 协议规定 URL 的字符集必须是 ISO-8859-1 编码格式的，URL 本身编码不确定，服务端根本无法处理。

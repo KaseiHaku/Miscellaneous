@@ -86,7 +86,9 @@ Padding Mode: 填充模式
 Digital Signature Algorithm: DSA
     数字签名，对数据用不对称加密算法的私钥加密，那么所有拥有公钥的人都能得到这份数据的原文，这样保证该数据是一个人所有，因为私钥是个人保留的
     Algorithm:
-        ECDSA: 基于 ECC 的 数字签名算法
+        RSA:   基于 对极大整数做因数分解 的 数字签名算法
+        ECDSA: 基于 ECC(Elliptic Curves Cryptography) 的 数字签名算法
+        EdDSA: 基于 Ed(Edwards-curve) 的 数字签名算法，跟 ECC 区别是: 基于 爱德华曲线，而不是 椭圆曲线，其中 Ed25519 是一种常用的 Edwards 曲线
 
 Key Exchange Protocol: 密钥交换协议
     DHE: Diffie-Hellman Exchange, 迪菲-赫尔曼密钥交换协议
